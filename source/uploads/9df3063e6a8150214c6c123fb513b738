@@ -1,0 +1,49 @@
+# Orçamento para o ABM
+
+
+## Próximo registo
+
+No FrontOffice ao visualizar os detalhes de um registo deverá aparecer um novo botão que permite ao utilizador passar para o próximo registo e registo anterior (registos irmãos - mesmo nível).
+
+O registo selecionado deve ficar assinalado a bold.
+
+Esforço: 3 dias
+
+## Datas descritivas na lista de resultados
+
+Apresentar as datas descritivas na listagem de registos após a pesquisa quando as datas extremas não estão definidas.
+
+Esforço: 1 dia
+
+
+## Duplicar N vezes
+
+Permitir duplicar um registo N vezes. O valor de N é definido pelo utilizador no momento da duplicação.
+
+Esforço: 1 dia
+
+## Associação semi-automática entre registos de descrição e registos de depósito
+
+Desenvolver mecanismo semelhante à associação de representações a registos de descrição, mas aplicado à gestão de depósito, i.e. Unidades de depósito e registos de descrição.
+
+Esforço: 15 dias
+
+## Atualização de registos de título
+
+Substituir os três campos atualmente destinados a informação respeitante a títulos (Tipo de título + Título + Título paralelo) apenas por dois: Título atribuído + Título formal.
+
+Esta alteração tem consequências na apresentação da informação na aplicação. Assim, as funcionalidades associadas ao título (e.g. ordenação nas pesquisas, apresentação do título na lista de registos, etc.) apenas estarão associadas ao campo **título atribuído**.
+
+Inclui: 
+- Alteração de terminologia da designação dos campos
+- Alteração das regras de apresentação de informação nas folhas de recolha de dados
+- Migração de dados para o novo modelo
+
+Não inclui:
+- Alteração das funcionalidades existentes, ou seja, o "título atribuído" assume o papel do anterior "título" na totalidade da aplicação (e.g. ordenações)
+
+Esforço: 4 dias
+
+
+
+

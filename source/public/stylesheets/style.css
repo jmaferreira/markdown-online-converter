@@ -1,0 +1,128 @@
+body {
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 20px;
+  font: 14px "opensans", "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: FFF7F7;
+  color: #D5CECE;
+}
+
+
+a {
+  color: #00B7FF;
+}
+
+
+
+
+
+.header-subtitle {
+  font-size: 30px;
+  font-family: "opensans", "Lucida Grande", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  margin-bottom: 0;
+  line-height: 0.8em;
+  margin-top: 0px;
+}
+
+.header-title {
+  line-height: 1em;
+  font-size: 64px;
+  font-family: "opensans", "Lucida Grande", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+
+}
+
+
+.drop-zone-message-wrapper {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.drop-zone {
+    color: white;
+    height: 400px;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    border: 1px #D5CECE dashed;
+    font-size: 3em;
+    color: #D5CECE;
+
+}
+
+
+
+.drop-zone-over {
+  transition: all 1s;
+  border: dotted 1px #D5CECE;
+  background-color: #FAEEEE;
+}
+
+
+
+
+/* Spinner CSS */
+.loader,
+.loader:before,
+.loader:after {
+  background: #ffffff;
+  -webkit-animation: load1 1s infinite ease-in-out;
+  animation: load1 1s infinite ease-in-out;
+  width: 1em;
+  height: 4em;
+}
+.loader {
+  color: #ffffff;
+  text-indent: -9999em;
+  margin: 88px auto;
+  position: relative;
+  font-size: 11px;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+.loader:before,
+.loader:after {
+  position: absolute;
+  top: 0;
+  content: '';
+}
+.loader:before {
+  left: -1.5em;
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+.loader:after {
+  left: 1.5em;
+}
+@-webkit-keyframes load1 {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 0;
+    height: 4em;
+  }
+  40% {
+    box-shadow: 0 -2em;
+    height: 5em;
+  }
+}
+@keyframes load1 {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 0;
+    height: 4em;
+  }
+  40% {
+    box-shadow: 0 -2em;
+    height: 5em;
+  }
+}
+
+/* end of Spinner CSS */
