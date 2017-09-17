@@ -2,8 +2,8 @@
 var app = angular.module("markdownOnlineConverterApp", ["angularFileUpload", 'ngSanitize']);
 
 
-app.controller("markdownOnlineConverterController", ['$scope', 'FileUploader', '$http', '$sce',
-    function($scope, FileUploader, $http, $sce) {
+app.controller("markdownOnlineConverterController", ['$scope', 'FileUploader', '$http', '$sce', '$location',
+    function($scope, FileUploader, $http, $sce, $location) {
 
  $scope.upload = {};
  $scope.upload.status = "onStart";
@@ -68,8 +68,8 @@ app.controller("markdownOnlineConverterController", ['$scope', 'FileUploader', '
       //$window.location.href = "/convert/" + response.fileId;
       //$scope.convertedUrl = "/convert/" + response.fileId;
 
-      $scope.upload.status = "onCompleteItem";
       $scope.pdf = "/" + response.id;
+      $scope.upload.status = "onCompleteItem";
 
       //$scope.pdf = "http://www.google.com";
       // convertToPdf(response.fileId, function(err, data) {
@@ -85,9 +85,13 @@ app.controller("markdownOnlineConverterController", ['$scope', 'FileUploader', '
   };
 
 
+  $scope.restart = function() {
+    $scope.upload.status = "onStart";
+  }
 
-  $scope.loadPage = function() {
-    $scope.pdf = "http://localhost:3000/314d145299e2dec6972360e2b94971e9.pdf";
+  $scope.goTo = function() {
+    //$location.path('/');
+    window.location.href = '/';
   }
 
 

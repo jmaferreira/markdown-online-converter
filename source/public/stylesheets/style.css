@@ -15,7 +15,6 @@ a {
 
 
 
-
 .header-subtitle {
   font-size: 30px;
   font-family: "opensans", "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -33,6 +32,15 @@ a {
   margin-bottom: 10px;
 
 }
+
+.header-subtitle:hover,
+.header-title:hover {
+  cursor: pointer;
+  color: #B5BEBE;
+  transition: all 0.5s;
+  transition-timing-function: ease-in-out;
+}
+
 
 
 .drop-zone-message-wrapper {
