@@ -23,21 +23,34 @@ router.post('/upload', upload.single('file'), function(req, res, next) {
 
 
 
+// converts and returns the pdf stream imediatly
+router.post('/convert2', upload.single('file'), function(req, res, next) {
+  var markdownFilepath = req.file.path;
+  var pdfFilePath = path.join(__dirname, '../filestore/' + req.file.filename + '.pdf');
+  var pdfWriteStream = fs.createWriteStream(pdfFilePath);
+
+	console.info("Starting conversion of " + markdownFilepath);
+  convertToPdf(markdownFilepath, res, true, function() {
+		console.info("Finished conversion. PDF sent to client.");
+  });
+
+});
+
+
+
+
 
 router.post('/convert', upload.single('file'), function(req, res, next) {
-	console.dir(req.file);
-
-  var data = {
-    'id': req.file.filename + '.pdf',
-  };
+	//console.dir(req.file);
 
   var markdownFilepath = req.file.path;
   var pdfFilePath = path.join(__dirname, '../filestore/' + req.file.filename + '.pdf');
-
   var pdfWriteStream = fs.createWriteStream(pdfFilePath);
+
+	console.info("Starting conversion of " + markdownFilepath);
   convertToPdf(markdownFilepath, pdfWriteStream, true, function() {
-    console.log("PDF written at " + pdfFilePath);
-    res.jsonp(data);
+    console.info("Finished conversion. PDF written at " + pdfFilePath);
+    res.jsonp( { 'id': "/pdf/" + req.file.filename + '.pdf' } );
   });
 
 });
@@ -49,7 +62,12 @@ router.post('/convert', upload.single('file'), function(req, res, next) {
 function convertToPdf(markdownFilepath, writeStream, deleteinputFile, callback) {
 
   var options = {
-    //cssPath: "./KEEPS.css"
+    //cssPath: path.join(__dirname, 'pdf-template.css'),
+		cssPath: path.join(__dirname, 'template-keeps.css'),
+		paperFormat: 'A4',
+		paperBorder: '2cm',
+		runningsPath: path.join(__dirname, 'runnings.js'),
+		//preProcessHtml: function() {}
   }
 
   var stream = fs.createReadStream(markdownFilepath)
@@ -59,21 +77,27 @@ function convertToPdf(markdownFilepath, writeStream, deleteinputFile, callback) 
 
     stream.on('finish', function () {
       if(deleteinputFile) {
-        fs.unlink(markdownFilepath, callback);
+        fs.unlink(markdownFilepath, function() {
+					console.info("Deleted file " + markdownFilepath);
+					callback();
+				});
       } else {
-        callback();
-      }
+				callback();
+			}
     });
 
 }
 
-// // Converts to MD to PDF
-// router.get('/:filename', function(req, res, next) {
-//   var filePath =  path.join(__dirname, '../filestore/' + req.params.filename);
-// 	//res.type('application/pdf')
-// 	//res.setHeader
-//   res.sendFile(filePath);
-// });
+
+router.get('/pdf/:filename', function(req, res, next) {
+  var filePath =  path.join(__dirname, '../filestore/' + req.params.filename);
+  res.sendFile(filePath, function() {
+		fs.unlink(filePath, function() {
+			console.info("Deleted file " + filePath);
+		});
+	});
+});
+
 
 
 module.exports = router;

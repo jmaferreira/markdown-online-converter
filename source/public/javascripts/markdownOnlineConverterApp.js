@@ -64,11 +64,11 @@ app.controller("markdownOnlineConverterController", ['$scope', 'FileUploader', '
       //console.info('onCancelItem', fileItem, response, status, headers);
   };
   uploader.onCompleteItem = function(fileItem, response, status, headers) {
-      console.info('onCompleteItem', fileItem, response, status, headers);
-      //$window.location.href = "/convert/" + response.fileId;
-      //$scope.convertedUrl = "/convert/" + response.fileId;
 
-      $scope.pdf = "/" + response.id;
+      //console.info('onCompleteItem', fileItem, response, status, headers);
+
+      $scope.pdf = response.id;
+      //$scope.pdf = "data:application/pdf;base64," + btoa(unescape(encodeURIComponent(response)));
       $scope.upload.status = "onCompleteItem";
 
       //$scope.pdf = "http://www.google.com";

@@ -21,63 +21,26 @@
 
 
 
-    <body ng-controller="markdownOnlineConverterController" nv-file-drop="" uploader="uploader" filters="queueLimit, customFilter">
+    <body ng-controller="markdownOnlineConverterController"
+          nv-file-drop=""
+          uploader="uploader"
+          filters="queueLimit, customFilter">
 
 
-      <header ng-include src="'header.html'" ng-click="goTo('/')">
-      </header>
+      <header  ng-click="goTo('/')" ng-include src="'./partials/header.html'"></header>
 
-      <!-- {{upload.status}} -->
-
-      <main>
-          <div ng-show="uploader.isHTML5">
-            <!-- 3. nv-file-over uploader="link" over-class="className" -->
-            <div ng-if="upload.status == 'onStart'" class="drop-zone" nv-file-over="" uploader="uploader" over-class="drop-zone-over">
-
-              <div class="drop-zone-message-wrapper">
-                  <div class="drop-zone-message-icon">
-                    <i class="fa fa-arrow-circle-o-down fa-3x"></i>
-                  </div>
-                  <div class="drop-zone-message">
-                    Drop your markdown files here
-                  </div>
-              </div>
-            </div>
-          </div>
-          <!-- end of uploader -->
-
-
-          <!-- Spinner -->
-            <div ng-if="upload.status == 'onProgressItem'" class="spinner">
-              Converting...
-              <div class="drop-zone-message-wrapper">
-                <div class="loader">Loading...</div>
-              </div>
-            </div>
-            <!-- end of spinner -->
-
-
-          <!-- Preview -->
-          <div ng-if="upload.status == 'onCompleteItem'" class="preview">
-            Preview
-            <iframe ng-src="{{pdf}}"
-              width="100%" height="400px">
-            </iframe>
+      <main class="main-block">
+          <div ng-if="uploader.isHTML5 && upload.status == 'onStart'"
+               class="drop-zone"
+               nv-file-over
+               uploader="uploader"
+               over-class="drop-zone-over"
+               ng-include="'./partials/dropzone.html'">
           </div>
 
+          <div ng-if="upload.status == 'onProgressItem'" ng-include="'./partials/spinner.html'"></div>
+          <div ng-if="upload.status == 'onCompleteItem'" ng-include="'./partials/preview.html'"></div>
       </main>
   </body>
 
-
-
-
 </html>
-
-
-
-          <!-- <ul>
-            <li ng-repeat="item in uploader.queue">
-                Name: <span ng-bind="item.file.name"></span><br/>
-                <button ng-click="item.upload()">upload</button>
-            </li>
-          </ul> -->

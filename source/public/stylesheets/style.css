@@ -22,9 +22,11 @@ a {
   margin-bottom: 0;
   line-height: 0.8em;
   margin-top: 0px;
+  transition: all 0.5s;
 }
 
 .header-title {
+  transition: all 0.5s;
   line-height: 1em;
   font-size: 64px;
   font-family: "opensans", "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -38,10 +40,11 @@ a {
   cursor: pointer;
   color: #B5BEBE;
   transition: all 0.5s;
-  transition-timing-function: ease-in-out;
 }
 
-
+.drop-zone-message {
+  font-size: 30px;
+}
 
 .drop-zone-message-wrapper {
   position: relative;
@@ -51,16 +54,14 @@ a {
 
 .drop-zone {
     color: white;
-    height: 400px;
+    height:60vh;
     width: 100%;
     margin: auto;
     text-align: center;
     border: 1px #D5CECE dashed;
     font-size: 3em;
     color: #D5CECE;
-
 }
-
 
 
 .drop-zone-over {
@@ -134,3 +135,19 @@ a {
 }
 
 /* end of Spinner CSS */
+
+
+
+
+@media only screen and (max-width: 900px) {
+
+  .header-subtitle {
+    font-size: 20px;
+    transition: all 0.5s;
+  }
+
+  .header-title {
+    font-size: 34px;
+    transition: all 0.5s;
+  }
+}
